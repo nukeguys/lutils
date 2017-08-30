@@ -1,15 +1,23 @@
+# -*- coding: utf-8 -*-
+import os
+
+
+class Util:
+
+
 def enum(*sequential, **named):
     enums = dict(zip(sequential, range(len(sequential))), **named)
     reverse = dict((value, key) for key, value in enums.items())
     enums['reverse_mapping'] = reverse
     return type('Enum', (), enums)
 
-class Colors:
-    HEADER = '\033[95m'
-    BLUE = '\033[94m'
-    GREEN = '\033[92m'
-    WARNING = '\033[93m'
-    RED = '\033[91m'
-    DEFAULT = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
+
+def filesByName(rootDir, fileName):
+    if not os.path.isdir(rootDir):
+        raise EnvironmentError('root is not directory')
+
+    foundFiles = []
+    for root, subDirs, files in os.walk(rootDir):
+        if fileName in files:
+            foundFiles.append(os.path.join(root, fileName))
+    return foundFiles
