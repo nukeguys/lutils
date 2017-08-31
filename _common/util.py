@@ -10,12 +10,12 @@ class Util:
         return type('Enum', (), enums)
 
 
-    def filesByName(rootDir, fileName):
+    def findFiles(rootDir, fileName):
         if not os.path.isdir(rootDir):
             raise EnvironmentError('root is not directory')
 
-        foundFiles = []
+        matchingFiles = []
         for root, subDirs, files in os.walk(rootDir):
             if fileName in files:
-                foundFiles.append(os.path.join(root, fileName))
-        return foundFiles
+                matchingFiles.append(os.path.join(root, fileName))
+        return matchingFiles
