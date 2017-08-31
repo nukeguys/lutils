@@ -1,10 +1,14 @@
 #! /usr/bin/env python
+# -*- coding: utf-8 -*-
 
-
+import sys
+import codecs
 from _common._linux.shell import Shell
 from _common.color import Colors
 
 if __name__ == '__main__':
+    sys.stdout = codecs.getwriter('utf8')(sys.stdout.detach())
+
     branch_str = Shell.execute('git branch')[0]
     branches = branch_str.strip().split('\n')
     for i, branch in enumerate(branches):
