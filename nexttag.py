@@ -31,8 +31,8 @@ if __name__ == '__main__':
     answer = input('Do you want to create & push tag "%s%s%s"? [y/n] ' % (Colors.GREEN, nextVersion, Colors.DEFAULT))
     if answer.lower() == 'y':
         bashCommand = 'git tag -a %s -m %s' % (nextVersion, nextVersion)
-        #Shell.execute(bashCommand)
-        #bashCommand = 'git push --tags'
-        #Shell.execute(bashCommand)
+        Shell.execute(bashCommand)
+        bashCommand = 'git push --tags'
+        Shell.execute(bashCommand)
     else:
         print('%s:(%s' % (Colors.RED, Colors.DEFAULT))
