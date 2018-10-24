@@ -1,2 +1,2 @@
-# lutils
+# utils
 personal python utility
