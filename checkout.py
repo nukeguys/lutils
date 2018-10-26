@@ -1,14 +1,14 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import print_function
+from builtins import input  # pip install future
 import sys
 import codecs
-from _common._linux.shell import Shell
+from _common.shell import Shell
 from _common.color import Colors
 
 if __name__ == '__main__':
-    sys.stdout = codecs.getwriter('utf8')(sys.stdout.detach())
-
     branch_str = Shell.execute('git branch')[0]
     branches = branch_str.strip().split('\n')
     for i, branch in enumerate(branches):
@@ -20,7 +20,7 @@ if __name__ == '__main__':
     try:
         select = int(input('\n which branch do you want to checkout? '))
         if 1 <= select and select <= len(branches):
-            if select != cur_branch + 1:
-                Shell.execute('git checkout %s' % branches[select - 1])
+             if select != cur_branch + 1:
+                 Shell.execute('git checkout %s' % branches[select - 1])
     except ValueError:
         print(':(')
